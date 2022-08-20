@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 
-export default function Home() {
+export default function Setting() {
 	return (
 		<div className={styles.container}>
 			<h1>This is the setting page</h1>
