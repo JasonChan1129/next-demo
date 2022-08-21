@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Home() {
 	const posts = Array.from({ length: 10 }).map((_, i) => (
 		<li key={i}>
-			<Link href={`/posts/${i}`}>{`post-${1 + i}`}</Link>
+			<Link href={`/posts/${i + 1}`}>{`post-${1 + i}`}</Link>
 		</li>
 	));
 
@@ -18,19 +18,16 @@ export default function Home() {
 			</Head>
 
 			<h1>This is the index page</h1>
-			<p>
-				<Link href="/setting">Go to setting</Link>
-			</p>
-			<p>
+			<p className={styles.card}>
 				<Link href="/rateSSR">Server side rendering</Link>
 			</p>
-			<p>
+			<p className={styles.card}>
 				<Link href="/rateSG">Static generate</Link>
 			</p>
-			<p>
+			<p className={styles.card}>
 				<Link href="/revalidate">Static generate with revalidate</Link>
 			</p>
-			<p>
+			<p className={styles.card}>
 				<Link href="/rateCSR">Client side rendering</Link>
 			</p>
 			<ul>{posts}</ul>
