@@ -3,6 +3,12 @@ import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 
 export default function Home() {
+	const posts = Array.from({ length: 10 }).map((_, i) => (
+		<li key={i}>
+			<Link href={`/posts/${i}`}>{`post-${1 + i}`}</Link>
+		</li>
+	));
+
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -24,6 +30,7 @@ export default function Home() {
 			<p>
 				<Link href="/rateCSR">Client side rendering</Link>
 			</p>
+			<ul>{posts}</ul>
 		</div>
 	);
 }

@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 export default function RateCSR() {
 	const [rate, setRate] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const [count, setCount] = useState(0);
+
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
@@ -14,16 +16,28 @@ export default function RateCSR() {
 			setIsLoading(false);
 			return data;
 		}
+		console.log('running useEffect');
 		fetchData();
+	}, []);
+
+	useEffect(() => {
+		console.log('run useEffect');
+		setInterval(() => {
+			setCount(prevCount => prevCount + 1);
+		}, 2000);
+
+		return clearInterval();
 	}, []);
 
 	if (isLoading) return <p>Loading...</p>;
 	if (!rate) return <p>No data...</p>;
+
 	return (
 		<div className={styles.container}>
 			<h1>Client side rendering</h1>
 			<h1>{`Current rate of bitcon is $${rate.bpi.USD.rate}${rate.bpi.USD.code}`}</h1>
 			<p>{`last updated at ${rate.time.updateduk}`}</p>
+			<p>{`Count: ${count}`}</p>
 			<Link href="/">home</Link>
 		</div>
 	);
