@@ -28,6 +28,9 @@ export default function Home() {
 				<Link href="/rateSG">Static generate</Link>
 			</p>
 			<p>
+				<Link href="/revalidate">Static generate with revalidate</Link>
+			</p>
+			<p>
 				<Link href="/rateCSR">Client side rendering</Link>
 			</p>
 			<ul>{posts}</ul>
