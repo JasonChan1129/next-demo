@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { setCookie, getCookie } from 'cookies-next';
 
 export default function RateSSR({ data }) {
 	const [count, setCount] = useState(0);
@@ -28,7 +29,8 @@ export default function RateSSR({ data }) {
 export async function getServerSideProps(context) {
 	const res = await fetch(`https://api.coindesk.com/v1/bpi/currentprice.json`);
 	const data = await res.json();
-
+	const cookies = getCookie('yummy', context);
+	console.log(cookies);
 	return {
 		props: { data },
 	};
